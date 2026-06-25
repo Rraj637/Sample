@@ -505,36 +505,38 @@
         }
 
         /* -----------------------------------------------
-           CART DATABASE LOGIC (LocalStorage)
+           CART DATABASE LOGIC (Node.js + MongoDB Backend)
         ----------------------------------------------- */
-        function getCart() {
-            var cart = localStorage.getItem('vaypari_cart');
-            return cart ? JSON.parse(cart) : [];
+        
+        async function fetchCart() {
+            try {
+                const response = await fetch('http://localhost:5000/api/cart?userId=user-123');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const cart = await response.json();
+                return cart;
+            } catch (error) {
+                console.error('Error fetching cart:', error);
+                return [];
+            }
         }
 
-        function saveCart(cart) {
-            localStorage.setItem('vaypari_cart', JSON.stringify(cart));
-            updateCartCount();
-        }
-
-        function updateCartCount() {
-            var cart = getCart();
+        async function updateCartCount() {
+            var cart = await fetchCart();
             var count = cart.reduce(function(total, item) { return total + item.quantity; }, 0);
             var cartBadges = document.querySelectorAll('.cart-count, #cartCount');
             cartBadges.forEach(function(badge) {
                 badge.innerText = count;
-                // Add a small bounce animation when updated
                 badge.style.transform = 'scale(1.5)';
                 setTimeout(function() { badge.style.transform = 'scale(1)'; }, 200);
             });
         }
 
         // Render Cart Page if on cart.html
-        function renderCartPage() {
+        async function renderCartPage() {
             var cartItemsList = document.getElementById('cartItemsList');
             if (!cartItemsList) return; // Not on cart page
 
-            var cart = getCart();
+            var cart = await fetchCart();
             var cartPageCount = document.getElementById('cartPageCount');
             var cartTotal = document.getElementById('cartTotal');
             
@@ -545,21 +547,21 @@
             if (cart.length === 0) {
                 cartItemsList.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">Your bag is empty.</p>';
             } else {
-                cart.forEach(function(item, index) {
+                cart.forEach(function(item) {
                     totalCount += item.quantity;
                     totalPrice += item.price * item.quantity;
 
                     var itemHtml = `
                         <div class="cart-item" style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border-light); align-items: center;">
-                            <img src="${item.img}" style="width: 80px; height: 100px; object-fit: cover; border-radius: var(--radius-sm);" alt="${item.name}">
+                            <img src="${item.img}" style="width: 80px; height: 100px; object-fit: cover; border-radius: var(--radius-sm);" alt="${item.productName}">
                             <div style="flex-grow: 1;">
-                                <h4 style="margin: 0 0 5px 0;">${item.name}</h4>
+                                <h4 style="margin: 0 0 5px 0;">${item.productName}</h4>
                                 <p style="margin: 0; color: var(--text-muted);">₹${item.price}</p>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
-                                <button class="qty-btn" data-index="${index}" data-action="minus" style="padding: 5px 10px; border: 1px solid var(--border); background: white; cursor: pointer;">-</button>
+                                <button class="qty-btn" data-id="${item.productId}" data-action="minus" style="padding: 5px 10px; border: 1px solid var(--border); background: white; cursor: pointer;">-</button>
                                 <span>${item.quantity}</span>
-                                <button class="qty-btn" data-index="${index}" data-action="plus" style="padding: 5px 10px; border: 1px solid var(--border); background: white; cursor: pointer;">+</button>
+                                <button class="qty-btn" data-id="${item.productId}" data-action="plus" style="padding: 5px 10px; border: 1px solid var(--border); background: white; cursor: pointer;">+</button>
                             </div>
                         </div>
                     `;
@@ -572,63 +574,74 @@
 
             // Bind quantity buttons
             document.querySelectorAll('.qty-btn').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    var index = this.getAttribute('data-index');
+                btn.addEventListener('click', async function() {
+                    var productId = this.getAttribute('data-id');
                     var action = this.getAttribute('data-action');
-                    var currentCart = getCart();
                     
-                    if (action === 'plus') {
-                        currentCart[index].quantity += 1;
-                    } else if (action === 'minus') {
-                        currentCart[index].quantity -= 1;
-                        if (currentCart[index].quantity <= 0) {
-                            currentCart.splice(index, 1);
-                        }
+                    try {
+                        await fetch('http://localhost:5000/api/update-quantity', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ userId: 'user-123', productId: productId, action: action })
+                        });
+                        updateCartCount();
+                        renderCartPage();
+                    } catch(err) {
+                        console.error('Error updating quantity:', err);
                     }
-                    saveCart(currentCart);
-                    renderCartPage();
                 });
             });
         }
 
         // Bind Add to Bag buttons
         qa('.add-to-bag-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', async function(e) {
                 e.stopPropagation();
                 var card = btn.closest('.product-card');
                 if (!card) return;
 
-                var name = card.getAttribute('data-product');
+                var productName = card.getAttribute('data-product');
                 var priceStr = card.querySelector('.current-price').innerText;
                 var price = parseInt(priceStr.replace(/[^0-9]/g, ''));
                 var imgEl = card.querySelector('.product-img');
-                // Extract background-image style or use a placeholder
                 var imgStyle = window.getComputedStyle(imgEl).backgroundImage;
                 var imgSrc = imgStyle !== 'none' ? imgStyle.replace(/^url\(["']?/, '').replace(/["']?\)$/, '') : 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80';
+                
+                var productId = productName.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
 
-                var cart = getCart();
-                var existingItem = cart.find(function(item) { return item.name === name; });
+                btn.innerText = 'Adding...';
 
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({
-                        name: name,
-                        price: price,
-                        img: imgSrc,
-                        quantity: 1
+                try {
+                    const response = await fetch('http://localhost:5000/api/add-to-cart', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            userId: 'user-123',
+                            productId: productId,
+                            productName: productName,
+                            price: price,
+                            img: imgSrc
+                        })
                     });
+
+                    if (response.ok) {
+                        btn.innerText = 'Added ✓';
+                        btn.style.background = 'var(--brand-dark)';
+                        toast('Added ' + productName + ' to database!', '🛍️');
+                        updateCartCount();
+
+                        setTimeout(function() {
+                            btn.innerText = '+ Add to Bag';
+                            btn.style.background = '';
+                        }, 1500);
+                    } else {
+                        btn.innerText = 'Failed';
+                    }
+                } catch (error) {
+                    console.error('Error adding to cart:', error);
+                    toast('Error connecting to backend!', '❌');
+                    btn.innerText = 'Error';
                 }
-
-                saveCart(cart);
-                btn.innerText = 'Added ✓';
-                btn.style.background = 'var(--brand-dark)';
-                setTimeout(function() {
-                    btn.innerText = '+ Add to Bag';
-                    btn.style.background = '';
-                }, 1500);
-
-                toast('Added ' + name + ' to your bag!', '🛍️');
             });
         });
 
