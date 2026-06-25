@@ -8,10 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/vaypariDB', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
+mongoose.connect('mongodb://localhost:27017/vaypariDB').then(() => {
     console.log('Database connected to MongoDB (vaypariDB)!');
 }).catch((err) => {
     console.error('MongoDB connection error. Make sure MongoDB is running locally:', err);
