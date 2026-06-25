@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Shop online for the latest fashion, electronics, and more at the best prices."
+    />
+    <meta
+      name="keywords"
+      content="shopping, fashion, electronics, deals, online store"
+    />
+    <meta name="author" content="Vaypari" />
+    <meta name="theme-color" content="#FF9900" />
+
+    <title>Vaypari - Your Online Shopping Destination</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- JavaScript for Menu Toggle -->
+    <script src="script.js"></script>
+
+    <!-- Favicon Section -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="android-chrome-512x512.png"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+  </head>
+
+  <!-- ============================================================================================= -->
+  <body>
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="container-fluid">
+        <div class="top-nav">
+          <div class="left-nav">
+            <a href="#" class="top-link top-link-help">Customer Care</a>
+            <span class="top-divider">|</span>
+            <a href="#" class="top-link top-link-sell">Sell on Vaypari</a>
+          </div>
+          <div class="right-nav">
+            <a href="#" class="top-link top-link-login">Login</a>
+            <span class="top-divider">|</span>
+            <a href="#" class="top-link top-link-signup">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Header -->
+    <header class="main-header">
+      <div class="container-fluid">
+        <div class="header-content">
+          <!-- Hamburger Menu Button -->
+          <button
+            class="hamburger-menu"
+            id="hamburger"
+            aria-label="Open mobile menu"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- Animated Logo -->
+          <div class="logo logo-animated">
+            <h1>Vaypari</h1>
+            <div class="shop-banner">Indian Shop</div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="search-bar search-animated">
+            <span class="search-prefix">🔍</span>
+            <input
+              type="text"
+              placeholder="Search for products, categories, or brands"
+            />
+            <button type="submit" class="search-button">
+              <span class="search-button-text">Search</span>
+            </button>
+          </div>
+
+          <!-- Right Icons -->
+          <div class="header-icons">
+            <div class="icon-item account">
+              <span class="icon">👤</span>
+              <a href="#">Account</a>
+            </div>
+            <div class="icon-item wishlist">
+              <span class="icon">❤️</span>
+              <a href="#">Wishlist</a>
+            </div>
+            <div class="icon-item cart">
+              <span class="icon">🛍️</span>
+              <a href="#">Cart</a>
+              <span class="cart-count">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="nav-menu">
+          <div class="nav-item nav-dropdown">
+            <a href="#">Men</a>
+            <div class="dropdown-panel">
+              <a href="#" class="dropdown-link">Ethnic Wear</a>
+              <a href="#" class="dropdown-link">Western Wear</a>
+              <a href="#" class="dropdown-link">Footwear</a>
+            </div>
+          </div>
+          <div class="nav-item nav-dropdown active">
+            <a href="#">Women</a>
+            <div class="dropdown-panel">
+              <a href="#" class="dropdown-link">Ethnic Wear</a>
+              <a href="#" class="dropdown-link">Beauty & Skincare</a>
+              <a href="#" class="dropdown-link">Premium Brands</a>
+            </div>
+          </div>
+          <div class="nav-item"><a href="#">Kids</a></div>
+          <div class="nav-item"><a href="#">Home & Living</a></div>
+          <div class="nav-item"><a href="#">Beauty</a></div>
+          <div class="nav-item"><a href="#">Sports</a></div>
+          <div class="nav-item"><a href="#">Accessories</a></div>
+          <div class="nav-item"><a href="#">Offers</a></div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-content">
+      <section class="hero-grid container-fluid">
+        <article class="hero-panel hero-lifestyle">
+          <div class="hero-content">
+            <span class="hero-label">CURATED FOR YOU</span>
+            <p class="hero-intro">
+              A premium edit of fashion, beauty and tech — beautifully balanced
+              for modern living.
+            </p>
+            <h1>Where editorial luxury meets intelligent discovery.</h1>
+            <p class="hero-description">
+              Explore a broad range of aspirational looks, smart gadgets, and
+              luxury essentials assembled in one elevated shopping destination.
+            </p>
+            <div class="hero-actions">
+              <button class="hero-button">Shop the Collection</button>
+              <button class="hero-button outline">Discover Stories</button>
+            </div>
+            <div class="hero-badges">
+              <span>Fast Delivery</span>
+              <span>Curated Launches</span>
+              <span>Premium Selection</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="visual-card visual-card-large"></div>
+            <div class="visual-stack">
+              <div class="visual-chic"></div>
+              <div class="visual-arc"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="hero-panel hero-showcase">
+          <div class="showcase-copy">
+            <span class="hero-label">CURATED FOR YOU</span>
+            <h2>
+              Smartly assembled luxury across fashion, beauty and electronics.
+            </h2>
+            <p class="hero-description">
+              This premium collection blends a wide range of categories with
+              editorial polish and intelligent product discovery.
+            </p>
+          </div>
+          <div class="showcase-grid">
+            <div class="showcase-card showcase-phone">
+              <span>💎</span>
+              <strong>Signature Phone</strong>
+              <p>Dynamic camera focus</p>
+            </div>
+            <div class="showcase-card showcase-watch">
+              <span>⌚</span>
+              <strong>Luxury Watch</strong>
+              <p>Crafted detail</p>
+            </div>
+            <div class="showcase-card showcase-bag">
+              <span>👜</span>
+              <strong>Designer Bag</strong>
+              <p>Premium finish</p>
+            </div>
+            <div class="showcase-card showcase-beauty">
+              <span>💧</span>
+              <strong>Skincare Set</strong>
+              <p>Radiance ritual</p>
+            </div>
+            <div class="showcase-card showcase-headphones">
+              <span>🎧</span>
+              <strong>Noise-canceling Audio</strong>
+              <p>Immersive sound</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block container-fluid flash-sale-strip">
+        <div class="flash-sale-copy">
+          <span>Flash Sale • Limited Time</span>
+          <h3>Up to 50% off on curated lifestyle essentials.</h3>
+        </div>
+        <div class="flash-sale-countdown">Ends in 03:18:22</div>
+      </section>
+
+      <section class="section-block container-fluid">
+        <div class="section-head-row">
+          <div>
+            <h2>Trending Now</h2>
+            <p>Discover a bold mix of fashion, beauty, and tech favorites.</p>
+          </div>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-image product-image-large fashion"></div>
+            <div class="product-meta">
+              <span class="brand-label">Luxe Label</span>
+              <h3>Silk Lounge Set</h3>
+              <div class="price">$129</div>
+              <button class="add-button">Add to Bag</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image tech"></div>
+            <div class="product-meta">
+              <span class="brand-label">AeroTech</span>
+              <h3>Premium Noise-Canceling Earbuds</h3>
+              <div class="price">$99</div>
+              <button class="add-button">Add to Bag</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image home"></div>
+            <div class="product-meta">
+              <span class="brand-label">Maison</span>
+              <h3>Curated Ceramic Dinnerware</h3>
+              <div class="price">$79</div>
+              <button class="add-button">Add to Bag</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image beauty"></div>
+            <div class="product-meta">
+              <span class="brand-label">Glow Ritual</span>
+              <h3>Daily Radiance Set</h3>
+              <div class="price">$42</div>
+              <button class="add-button">Add to Bag</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block container-fluid lookbook-section">
+        <div class="section-head-row">
+          <div>
+            <h2>Lookbook & Lifestyle</h2>
+            <p>
+              Styled stories and curated scenes for every room and wardrobe.
+            </p>
+          </div>
+        </div>
+
+        <div class="lookbook-grid">
+          <article class="lookbook-card">
+            <div class="lookbook-image lookbook-fashion"></div>
+            <div class="lookbook-content">
+              <h3>Summer Edit</h3>
+              <p>5 stylish outfits for effortless everyday luxury.</p>
+            </div>
+          </article>
+
+          <article class="lookbook-card">
+            <div class="lookbook-image lookbook-home"></div>
+            <div class="lookbook-content">
+              <h3>Home Sanctuary</h3>
+              <p>Modern living pieces that elevate your space.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="footer-prefooter container-fluid">
+        <div class="prefooter-grid">
+          <div class="trust-badges">
+            <article class="trust-badge">
+              <span class="trust-icon">✔️</span>
+              <div>
+                <strong>100% Original Guarantee</strong>
+                <p>Authentic brands delivered every time.</p>
+              </div>
+            </article>
+            <article class="trust-badge">
+              <span class="trust-icon">↺</span>
+              <div>
+                <strong>Free 30-Day Returns</strong>
+                <p>Shop risk-free and return with ease.</p>
+              </div>
+            </article>
+            <article class="trust-badge">
+              <span class="trust-icon">🔒</span>
+              <div>
+                <strong>Secure Payments</strong>
+                <p>Protected checkout with global payment partners.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="app-newsletter">
+            <div class="download-block">
+              <div class="download-copy">
+                <span class="footer-tag">Download App</span>
+                <h3>Shop smarter on the go.</h3>
+                <p>
+                  Scan the code or get the app from the App Store or Play Store.
+                </p>
+              </div>
+              <div class="download-actions">
+                <div class="qr-code">QR</div>
+                <div class="store-buttons">
+                  <a href="#" class="store-button apple">App Store</a>
+                  <a href="#" class="store-button google">Google Play</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="newsletter-block">
+              <span class="footer-tag">Stay in the loop</span>
+              <h3>10% off your first order</h3>
+              <form class="newsletter-form" action="#">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  aria-label="Email address"
+                />
+                <button type="submit">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer-main container-fluid">
+        <div class="footer-links-grid">
+          <div class="footer-column">
+            <h4>Customer Care</h4>
+            <a href="#">Help Center</a>
+            <a href="#">Track Order</a>
+            <a href="#">Returns & Refunds</a>
+            <a href="#">Cancel Order</a>
+            <a href="#">Contact Us</a>
+          </div>
+          <div class="footer-column">
+            <h4>Shop by Department</h4>
+            <a href="#">Men's Fashion</a>
+            <a href="#">Women's Fashion</a>
+            <a href="#">Electronics</a>
+            <a href="#">Home & Living</a>
+            <a href="#">Beauty & Grooming</a>
+          </div>
+          <div class="footer-column">
+            <h4>About Velora</h4>
+            <a href="#">Our Story</a>
+            <a href="#">Careers</a>
+            <a href="#">Press</a>
+            <a href="#">Corporate Information</a>
+            <a href="#">Sustainability</a>
+          </div>
+          <div class="footer-column">
+            <h4>Partner With Us</h4>
+            <a href="#">Sell on Velora</a>
+            <a href="#">Affiliate Program</a>
+            <a href="#">Advertise Your Products</a>
+            <a href="#">Vendor Guidelines</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer-sub container-fluid">
+        <div class="footer-bottom-row">
+          <div class="footer-region">
+            <label for="country-region">Country / Region</label>
+            <select id="country-region">
+              <option>United States</option>
+              <option>India</option>
+              <option>Europe</option>
+            </select>
+            <label for="currency">Currency</label>
+            <select id="currency">
+              <option>$ USD</option>
+              <option>₹ INR</option>
+              <option>€ EUR</option>
+            </select>
+          </div>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+          <div class="footer-payments">
+            <span>Visa</span>
+            <span>Mastercard</span>
+            <span>Stripe</span>
+            <span>Razorpay</span>
+            <span>PayPal</span>
+            <span>Apple Pay</span>
+          </div>
+          <div class="footer-social">
+            <a href="#">Instagram</a>
+            <a href="#">X</a>
+            <a href="#">TikTok</a>
+            <a href="#">Pinterest</a>
+          </div>
+        </div>
+        <div class="footer-copy">© 2026 Vaypari. All rights reserved.</div>
+      </section>
+    </main>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <h2>Vaypari</h2>
+        <button class="close-menu" id="closeMenu">&times;</button>
+      </div>
+
+      <div class="mobile-menu-content">
+        <!-- Top Menu Items -->
+        <div class="mobile-menu-section">
+          <a href="#" class="mobile-menu-item">Customer Care</a>
+          <a href="#" class="mobile-menu-item">Sell on Vaypari</a>
+        </div>
+
+        <hr class="menu-divider" />
+
+        <!-- Categories Section -->
+        <div class="mobile-menu-section">
+          <h3>Categories</h3>
+          <a href="#" class="mobile-menu-item">Men</a>
+          <a href="#" class="mobile-menu-item">Women</a>
+          <a href="#" class="mobile-menu-item">Kids</a>
+          <a href="#" class="mobile-menu-item">Home & Living</a>
+          <a href="#" class="mobile-menu-item">Beauty</a>
+          <a href="#" class="mobile-menu-item">Sports</a>
+          <a href="#" class="mobile-menu-item">Accessories</a>
+          <a href="#" class="mobile-menu-item">Offers</a>
+        </div>
+
+        <hr class="menu-divider" />
+
+        <!-- Account Section -->
+        <div class="mobile-menu-section">
+          <a href="#" class="mobile-menu-item account">👤 Account</a>
+          <a href="#" class="mobile-menu-item wishlist">❤️ Wishlist</a>
+          <a href="#" class="mobile-menu-item">🛍️ Cart</a>
+        </div>
+
+        <hr class="menu-divider" />
+
+        <!-- Auth Section -->
+        <div class="mobile-menu-section auth-section">
+          <a href="#" class="mobile-menu-item login">Login</a>
+          <a href="#" class="mobile-menu-item signup">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
