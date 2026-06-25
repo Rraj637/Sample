@@ -8,7 +8,7 @@
     <meta name="keywords" content="fashion, online shopping, clothing, shoes, accessories, beauty, home decor, India" />
     <meta name="author" content="Vaypari" />
     <meta name="theme-color" content="#ff3f6c" />
-    <title>My Reviews & Ratings - Vaypari Account</title>
+    <title>My Bag - Vaypari</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <script src="script.js" defer></script>
@@ -245,41 +245,16 @@
     </header>
 
     
-    <!-- ==================== ACCOUNT LAYOUT ==================== -->
     <main class="page-content">
-        <div class="account-container">
-            
-        <aside class="account-sidebar">
-            <div class="account-user">
-                <div class="account-avatar">V</div>
-                <div class="account-user-info">
-                    <h3>Vaypari User</h3>
-                    <p>user@vaypari.com</p>
-                </div>
+        <div class="cart-container" style="max-width: 800px; margin: 40px auto; padding: 20px;">
+            <h2 style="font-family: var(--font-neo-grotesque); margin-bottom: 20px;">Shopping Bag (<span id="cartPageCount">0</span> Items)</h2>
+            <div id="cartItemsList">
+                <!-- Cart items will be rendered here by JS -->
             </div>
-            <nav class="account-nav">
-                <a href="orders.html" class="account-nav-item ">📦 My Orders</a>
-                <a href="reviews.html" class="account-nav-item active">💬 My Reviews & Ratings</a>
-                <a href="qa.html" class="account-nav-item ">❓ My Questions & Answers</a>
-                <a href="coupons.html" class="account-nav-item ">🎫 My Coupons</a>
-                <a href="credit.html" class="account-nav-item ">🎁 Vaypari Credit</a>
-                <a href="settings.html" class="account-nav-item ">⚙️ Account Settings</a>
-
-            </nav>
-        </aside>
-
-            <div class="account-content">
-                
-            <h2>My Reviews & Ratings</h2>
-            <div class="mock-review-card reveal-up">
-                <div class="mock-details">
-                    <h4>Men Casual Slim Fit Shirt</h4>
-                    <p>⭐⭐⭐⭐⭐ - "Amazing quality and perfect fit! Highly recommend to everyone."</p>
-                </div>
-                <button class="mock-btn">Edit Review</button>
-            </div>
-        
+            <div class="cart-summary" style="margin-top: 30px; padding: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-family: var(--font-neo-grotesque);">Total: ₹<span id="cartTotal">0</span></h3>
+                <button class="mock-btn" style="padding: 15px 40px; font-size: 1.1rem; background: var(--brand); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer;" onclick="alert('Checkout process initiated!')">Checkout</button>
             </div>
         </div>
     </main>
-    <footer class="main-footer">undefined
+<footer class="main-footer">undefined
